@@ -1,26 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import BucketList from "./components/bucketList.component";
+import EditList from "./components/createItem.component";
+import CreateItem from "./components/editList.component";
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="App container">
+          <nav className="navbar">
+            <Link to="/" className="navbar-brand">
+              Bucket List
+            </Link>
+            <div className="collapse nav-collapse">
+              <ul>
+                <li className="navbar-item">
+                  <Link to="/" className="nav-link">
+                    The List
+                  </Link>
+                </li>
+                <li className="navbar-item">
+                  <Link to="/create" className="nav-link">
+                    Create Item
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <h2>The Bucket List</h2>
+          <h4>Helping you get all your affairs in order</h4>
+          <br />
+          <Route path="/" exact component={BucketList} />
+          <Route path="/edit/:id" component={EditList} />
+          <Route path="/create" component={CreateItem} />
+        </div>
+      </Router>
     );
   }
 }
