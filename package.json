@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Holgermueller/bucketlist/issues"
   },
-  "homepage": "https://github.com/Holgermueller/bucketlist#readme"
+  "homepage": "https://github.com/Holgermueller/bucketlist#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.17"
+  }
 }
