@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(morgan('tiny'));
 
+app.use(compression());
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('./client/build'));
 }
