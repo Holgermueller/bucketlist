@@ -4,8 +4,9 @@ export default class createItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: "",
+      itemOnList: "",
       status: "",
+      dateCreated: "",
       completed: false
     };
 
@@ -14,12 +15,12 @@ export default class createItem extends Component {
   }
 
   handleChange = e => {
-    this.setState({ description: e.target.value });
+    this.setState({ itemOnList: e.target.value });
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("You entered: " + this.state.description);
+    console.log("You entered: " + this.state.itemOnList);
   }
 
   render() {
@@ -29,9 +30,9 @@ export default class createItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            name="description"
+            name="itemOnList"
             placeholder="What would you like to do?"
-            value={this.state.description}
+            value={this.state.itemOnList}
             onChange={this.handleChange}
           />
           <input type="submit" value="SUBMIT" className="btn btn-primary" />

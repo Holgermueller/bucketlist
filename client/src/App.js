@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import BucketList from "./components/bucketList.component";
 import CreateItem from "./components/createItem.component";
 import EditItem from "./components/editItem.component";
+import CompletedItems from "./components/completedItems.components";
 import "./App.css";
 
 class App extends Component {
@@ -26,6 +27,11 @@ class App extends Component {
                     Create Item
                   </Link>
                 </li>
+                <li className="navbar-item">
+                  <Link to="/completed" className="nav-link">
+                    Completed Items!
+                  </Link>
+                </li>
               </ul>
             </div>
           </nav>
@@ -35,6 +41,7 @@ class App extends Component {
           <br />
           <Route path="/" exact component={BucketList} />
           <Route path="/edit/:id" component={EditItem} />
+          <Route path="/completed" component={CompletedItems} />
           <Route path="/create" component={CreateItem} />
         </div>
       </Router>
