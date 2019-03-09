@@ -1,0 +1,16 @@
+.navbar {
+  display: inline-flex;
+}
+
+ul {
+  list-style: none;
+  display: inline-flex;
+}
+
+link {
+  text-decoration: none;
+}
+
+h2 {
+  margin: 5% auto;
+}
