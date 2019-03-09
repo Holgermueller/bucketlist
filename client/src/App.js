@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import BucketList from "./components/bucketList.component";
-import EditItem from "./components/createItem.component";
-import CreateItem from "./components/editList.component";
+import CreateItem from "./components/createItem.component";
+import EditItem from "./components/editItem.component";
 import "./App.css";
 
 class App extends Component {
