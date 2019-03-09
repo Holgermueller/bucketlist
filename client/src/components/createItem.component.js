@@ -14,7 +14,7 @@ export default class createItem extends Component {
   }
 
   handleChange = e => {
-    this.setState({ description: e.target.description });
+    this.setState({ description: e.target.value });
   }
 
   handleSubmit = e => {
@@ -29,8 +29,9 @@ export default class createItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
+            name="description"
             placeholder="What would you like to do?"
-            description={this.state.description}
+            value={this.state.description}
             onChange={this.handleChange}
           />
           <input type="submit" value="SUBMIT" className="btn btn-primary" />
