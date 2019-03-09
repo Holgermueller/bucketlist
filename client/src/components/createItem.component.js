@@ -16,12 +16,14 @@ export default class createItem extends Component {
 
   handleChange = e => {
     this.setState({ itemOnList: e.target.value });
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("You entered: " + this.state.itemOnList);
-  }
+    console.log(
+      "You entered: " + this.state.itemOnList + " " + this.state.completed
+    );
+  };
 
   render() {
     return (
