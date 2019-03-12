@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const bucketListItem = new Schema({
-  itemOnList: { type: String, required: true },
-  status: { type: String, required: true },
-  dateCreated: { type: Date, required: true },
-  completed: { type: Boolean, required: true }
+let bucketListItem = new Schema({
+  itemOnList: { type: String },
+  status: { type: String },
+  dateCreated: { type: Date },
+  completed: { type: Boolean }
 });
 
-module.exports = mongoose.model("bucketListItems", bucketListItem);
+module.exports = mongoose.model("bucketListItem", bucketListItem);

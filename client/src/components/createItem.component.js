@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export default class createItem extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       itemOnList: "",
-      status: "",
+      status: "Added to list.",
       dateCreated: "",
       completed: false
     };
@@ -23,6 +25,24 @@ export default class createItem extends Component {
     console.log(
       "You entered: " + this.state.itemOnList + " " + this.state.completed
     );
+
+    const newBucketListItem = {
+      itemOnList: this.state.itemOnList,
+      status: this.state.status,
+      dateCreated: this.state.dateCreated,
+      completed: this.state.completed
+    };
+
+    axios
+      .post("http://localhost:3001/create/add", newBucketListItem)
+      .then(res => console.log(res.date));
+
+    this.setState({
+      itemOnList: "",
+      status: "Added to list.",
+      dateCreated: "",
+      completed: false
+    });
   };
 
   render() {
