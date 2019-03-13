@@ -25,6 +25,7 @@ export default class createItem extends Component {
     console.log(
       "You entered: " + this.state.itemOnList + " " + this.state.completed
     );
+    console.log(this.state.status);
 
     const newBucketListItem = {
       itemOnList: this.state.itemOnList,

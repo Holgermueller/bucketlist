@@ -5,21 +5,20 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const routes = require("./routes");
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(morgan("tiny"));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("./client/build"));
+  app.use(express.static("./client/build/index.html"));
 }
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost:27017/bucketListDatabase",
   { useNewUrlParser: true }

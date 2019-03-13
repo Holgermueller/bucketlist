@@ -14,6 +14,18 @@ bucketListRouter.route("/:id").get(function(req, res) {
   });
 });
 
+bucketListRouter.route("/add").post(function(req, res) {
+  let listItem = new listItem(req.body);
+  listItem
+    .save()
+    .then(listItem => {
+      res.status(200).json({ "listItem": "Item addition successful" });
+    })
+    .catch(err => {
+      res.status(400).send("Addition failure.");
+    });
+});
+
 bucketListRouter.route("/update/:id").post(function(req, res) {
   bucketListController.findById(req.params.id, function(err, listItem) {
     !listItem
@@ -32,18 +44,6 @@ bucketListRouter.route("/update/:id").post(function(req, res) {
         res.status(400).send("Update not possible.");
       });
   });
-});
-
-bucketListRouter.route("/add").post(function(req, res) {
-  let listItem = new listItem(req.body);
-  listItem
-    .save()
-    .then(listItem => {
-      res.status(200).json({ listItem: "Item addition successfual" });
-    })
-    .catch(err => {
-      res.status(400).send("Addition failure.");
-    });
 });
 
 module.exports = bucketListRouter;
