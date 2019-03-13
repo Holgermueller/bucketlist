@@ -1,5 +1,5 @@
 const express = require("express");
-//const compression = require("compression");
+const compression = require("compression");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -14,11 +14,12 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("./client/build/index.html"));
 }
 
-app.use(cors());
+app.use(cors()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(compression());
 
-//mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost:27017/bucketListDatabase",
   { useNewUrlParser: true }

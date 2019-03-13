@@ -25,7 +25,6 @@ export default class createItem extends Component {
     console.log(
       "You entered: " + this.state.itemOnList + " " + this.state.completed
     );
-    console.log(this.state.status);
 
     const newBucketListItem = {
       itemOnList: this.state.itemOnList,
@@ -35,8 +34,8 @@ export default class createItem extends Component {
     };
 
     axios
-      .post("http://localhost:3001/create/add", newBucketListItem)
-      .then(res => console.log(res.date));
+      .post("http://localhost:3001/routes/add", newBucketListItem)
+      .then(res => console.log(res.data));
 
     this.setState({
       itemOnList: "",
