@@ -34,7 +34,7 @@ export default class createItem extends Component {
     };
 
     axios
-      .post("http://localhost:3001/routes/add", newBucketListItem)
+      .post("http://localhost:3001/bucketList/add", newBucketListItem)
       .then(res => console.log(res.data));
 
     this.setState({
