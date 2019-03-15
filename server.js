@@ -56,7 +56,7 @@ blRoutes.route("/add").post(function(req, res) {
   bucketListItem
     .save()
     .then(BucketListItem => {
-      res.status(200).json({ "bucketListItem": "Item addition successful." });
+      res.status(200).json({ bucketListItem: "Item addition successful." });
     })
     .catch(err => {
       res.status(400).send("Addition failure.");
@@ -64,22 +64,23 @@ blRoutes.route("/add").post(function(req, res) {
 });
 
 blRoutes.route("/update/:id").post(function(req, res) {
-  BucketListItem.findById(req.params.id, function(err, bucketList) {
-    if (!BucketListItem) {
+  BucketListItem.findById(req.params.id, function(err, bucketListItem) {
+    if (!bucketListItem) {
       res.status(404).send("Data not found.");
     } else {
-      (BucketListItem.itemOnList = req.body.itemOnList),
-        (BucketListItem.status = req.body.status),
-        (BucketListItem.dateCreated = req.body.dateCreated),
-        (BucketListItem.completed = req.body.completed);
+      bucketListItem.itemOnList = req.body.itemOnList;
+      bucketListItem.status = req.body.status;
+      bucketListItem.dateCreated = req.body.dateCreated;
+      bucketListItem.completed = req.body.completed;
 
-        BucketListItem
+      bucketListItem
         .save()
-        .then(BucketListItem => {
+        .then(bucketListItem => {
           res.json("Updated.");
         })
         .catch(err => {
-          res.status(400).send("Error");
+          res.status(400).send({ error: err });
+          console.log(err);
         });
     }
   });
