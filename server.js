@@ -8,7 +8,7 @@ const blRoutes = express.Router();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-//Models
+//Import Models
 let BucketListItem = require("./models/bucketListItemModel");
 
 app.use(morgan("tiny"));
@@ -64,26 +64,9 @@ blRoutes.route("/add").post(function(req, res) {
 });
 
 blRoutes.route("/update/:id").post(function(req, res) {
-  BucketListItem.findById(req.params.id, function(err, bucketListItem) {
-    if (!bucketListItem) {
-      res.status(404).send("Data not found.");
-    } else {
-      bucketListItem.itemOnList = req.body.itemOnList;
-      bucketListItem.status = req.body.status;
-      bucketListItem.dateCreated = req.body.dateCreated;
-      bucketListItem.completed = req.body.completed;
-
-      bucketListItem
-        .save()
-        .then(bucketListItem => {
-          res.json("Updated.");
-        })
-        .catch(err => {
-          res.status(400).send({ error: err });
-          console.log(err);
-        });
-    }
-  });
+  BucketListItem.findOneAndUpdate({ _id: req.params.id }, req.body)
+    .then(bucketListItem => req.json(bucketListItem))
+    .catch(err => res.status(404).send(err));
 });
 
 app.use("/bucketList", blRoutes);
