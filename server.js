@@ -64,8 +64,11 @@ blRoutes.route("/add").post(function(req, res) {
 });
 
 blRoutes.route("/update/:id").post(function(req, res) {
-  BucketListItem.findOneAndUpdate({ _id: req.params.id }, req.body)
-    .then(bucketListItem => req.json(bucketListItem))
+  BucketListItem.findOneAndUpdate({ _id: req.params.id }, req.body, {
+    upsert: true,
+    returnNewDocument: true
+  })
+    .then(bucketListItem => res.json(bucketListItem))
     .catch(err => res.status(404).send(err));
 });
 
