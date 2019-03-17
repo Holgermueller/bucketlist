@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let bucketListItem = new Schema({
-  itemOnList: { type: String, required: true },
-  status: { type: String, required: true },
-  dateCreated: { type: Date, default: Date.now() },
+  description: { type: String, required: true },
+  comment: { type: String, required: true },
+  date: { type: Date, default: Date.now },
   completed: Boolean
 });
 

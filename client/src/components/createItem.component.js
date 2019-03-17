@@ -6,9 +6,9 @@ export default class createItem extends Component {
     super(props);
 
     this.state = {
-      itemOnList: "",
-      status: "Added to list.",
-      dateCreated: "",
+      description: "",
+      comment: "Added to list.",
+      date: "",
       completed: false
     };
 
@@ -17,19 +17,19 @@ export default class createItem extends Component {
   }
 
   handleChange = e => {
-    this.setState({ itemOnList: e.target.value });
+    this.setState({ description: e.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     console.log(
-      "You entered: " + this.state.itemOnList + " " + this.state.completed
+      "You entered: " + this.state.description + " " + this.state.completed
     );
 
     const newBucketListItem = {
-      itemOnList: this.state.itemOnList,
-      status: this.state.status,
-      dateCreated: this.state.dateCreated,
+      description: this.state.description,
+      comment: this.state.comment,
+      date: this.state.date,
       completed: this.state.completed
     };
 
@@ -38,9 +38,9 @@ export default class createItem extends Component {
       .then(res => console.log(res.data));
 
     this.setState({
-      itemOnList: "",
-      status: "Added to list.",
-      dateCreated: "",
+      description: "",
+      comment: "Added to list.",
+      date: "",
       completed: false
     });
   };
@@ -52,9 +52,9 @@ export default class createItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            name="itemOnList"
+            name="description"
             placeholder="What would you like to do?"
-            value={this.state.itemOnList}
+            value={this.state.description}
             onChange={this.handleChange}
           />
           <input type="submit" value="SUBMIT" className="btn btn-primary" />

@@ -60,13 +60,13 @@ blRoutes.route("/add").post(function(req, res) {
     })
     .catch(err => {
       res.status(400).send("Addition failure.");
+      console.log(err)
     });
 });
 
 blRoutes.route("/update/:id").post(function(req, res) {
   BucketListItem.findOneAndUpdate({ _id: req.params.id }, req.body, {
-    upsert: true,
-    returnNewDocument: true
+    new: true
   })
     .then(bucketListItem => res.json(bucketListItem))
     .catch(err => res.status(404).send(err));
