@@ -30,7 +30,9 @@ export default class bucketList extends Component {
           bucketListItem_completed: ""
         });
       })
-      .catch(err => {});
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -41,11 +43,11 @@ export default class bucketList extends Component {
         <div>
           {this.state.itemsOnList ? (
             <ul>
-              this.state.itemsOnList.map(itemOnList => (
-                <li>List Item goes here!</li>
-              ))
+              {this.state.itemsOnList.map(itemOnList => (
+                <li>{itemOnList.bucketListItem_name}</li>
+              ))}
             </ul>
-          ):(
+          ) : (
             <ul>
               <li>Enter something already!</li>
             </ul>

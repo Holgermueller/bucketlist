@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import axios from "axios";
+import API from "../utils/API";
 
 export default class createItem extends Component {
   constructor(props) {
@@ -23,19 +23,22 @@ export default class createItem extends Component {
   handleSubmit = e => {
     e.preventDefault();
     console.log(
-      "You entered: " + this.state.bucketListItem_name + " " + this.state.bucketListItem_completed
+      "You entered: " +
+        this.state.bucketListItem_name +
+        " " +
+        this.state.bucketListItem_completed
     );
 
-    const newBucketListItem = {
-      bucketListItem_name: this.state.bucketListItem_name,
-      bucketListItem_comment: this.state.bucketListItem_comment,
-      date: this.state.date,
-      bucketListItem_completed: this.state.bucketListItem_completed
-    };
-
-    axios
-      .post("http://localhost:3001/bucketList/add", newBucketListItem)
-      .then(res => console.log(res.data));
+    API.enterBucketListItem({
+      newBucketListItem: {
+        bucketListItem_name: this.state.bucketListItem_name,
+        bucketListItem_comment: this.state.bucketListItem_comment,
+        date: this.state.date,
+        bucketListItem_completed: this.state.bucketListItem_completed
+      }
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
 
     this.setState({
       bucketListItem_name: "",

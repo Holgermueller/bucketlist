@@ -1,9 +1,15 @@
-import axios from 'axios';
+import axios from "axios";
 
-export default {
+const API = {
+  enterBucketListItem: function(newBucketListItem) {
+    return axios
+      .post("http://localhost:3001/bucketList/add", newBucketListItem)
+      .then(res => console.log(res.data));
+  },
 
   getBucketListItems: function() {
-    return axios.get("/")
+    return axios.get("/");
   }
-
 };
+
+export default API;
