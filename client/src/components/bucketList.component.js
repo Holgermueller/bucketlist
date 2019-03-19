@@ -1,38 +1,41 @@
 import React, { Component } from "react";
-import API from "../utils/API";
+import {Link} from "react-router-dom";
+import axios from "axios";
+import "./bucket-list.component.css";
+//import API from "../utils/API";
+
+const ItemOnList = props => (
+  <li className="bucket-list-item"> 
+    <div>
+{props.itemOnList.bucketListItem_name}
+    </div>
+  <div>
+    <Link to={"/edit/"+ props.itemOnList._id}>Edit</Link>
+  </div>
+  </li>
+)
 
 export default class bucketList extends Component {
-  state = {
-    itemsOnList: [],
-    bucketListItem_name: "",
-    bucketListItem_comment: "",
-    date: "",
-    bucketListItem_completed: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      itemsOnList: []
+    };
+  }
 
   componentDidMount = () => {
-    this.loadBucketListItems();
+    axios.get("http://localhost:3001/bucketList/")
+    .then(response => {
+      this.setState({itemsOnList: response.data});
+    }).catch(err => {
+      console.log(err);
+    })
   };
 
   loadBucketListItems = () => {
-    API.getBucketListItems(
-      this.state.bucketListItem_name,
-      this.state.bucketListItem_comment,
-      this.state.date,
-      this.state.bucketListItem_completed
-    )
-      .then(res => {
-        this.setState({
-          itemsOnList: res.data.response,
-          bucketListItem_name: "",
-          bucketListItem_comment: "",
-          date: "",
-          bucketListItem_completed: ""
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    return this.state.itemsOnList.map(function(listItem, i){
+      return <ItemOnList itemOnList={listItem} key={i}/>;
+    })
   };
 
   render() {
@@ -42,10 +45,8 @@ export default class bucketList extends Component {
 
         <div>
           {this.state.itemsOnList ? (
-            <ul>
-              {this.state.itemsOnList.map(itemOnList => (
-                <li>{itemOnList.bucketListItem_name}</li>
-              ))}
+            <ul className="bucket-list-display">
+              {this.loadBucketListItems()}
             </ul>
           ) : (
             <ul>
