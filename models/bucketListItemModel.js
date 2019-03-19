@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let bucketListItem = new Schema({
-  description: { type: String, required: true },
-  comment: { type: String, required: true },
+  bucketListItem_name: { type: String },
+  bucketListItem_comment: { type: String },
   date: { type: Date, default: Date.now },
-  completed: Boolean
+  bucketListItem_completed: { type: Boolean }
 });
 
 module.exports = mongoose.model("bucketListItem", bucketListItem);

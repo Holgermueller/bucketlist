@@ -4,10 +4,10 @@ import API from "../utils/API";
 export default class bucketList extends Component {
   state = {
     itemsOnList: [],
-    itemDescription: "",
-    status: "",
-    dateCreated: "",
-    completed: ""
+    bucketListItem_name: "",
+    bucketListItem_comment: "",
+    date: "",
+    bucketListItem_completed: ""
   };
 
   componentDidMount = () => {
@@ -16,18 +16,18 @@ export default class bucketList extends Component {
 
   loadBucketListItems = () => {
     API.getBucketListItems(
-      this.state.itemDescription,
-      this.state.status,
-      this.state.dateCreated,
-      this.state.completed
+      this.state.bucketListItem_name,
+      this.state.bucketListItem_comment,
+      this.state.date,
+      this.state.bucketListItem_completed
     )
       .then(res => {
         this.setState({
           itemsOnList: res.data.response,
-          itemDescription: "",
-          status: "",
-          dateCreated: "",
-          completed: ""
+          bucketListItem_name: "",
+          bucketListItem_comment: "",
+          date: "",
+          bucketListItem_completed: ""
         });
       })
       .catch(err => {});

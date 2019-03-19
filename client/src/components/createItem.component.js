@@ -6,10 +6,10 @@ export default class createItem extends Component {
     super(props);
 
     this.state = {
-      description: "",
-      comment: "Added to list.",
+      bucketListItem_name: "",
+      bucketListItem_comment: "Added to list.",
       date: "",
-      completed: false
+      bucketListItem_completed: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,20 +17,20 @@ export default class createItem extends Component {
   }
 
   handleChange = e => {
-    this.setState({ description: e.target.value });
+    this.setState({ bucketListItem_name: e.target.value });
   };
 
   handleSubmit = e => {
     e.preventDefault();
     console.log(
-      "You entered: " + this.state.description + " " + this.state.completed
+      "You entered: " + this.state.bucketListItem_name + " " + this.state.bucketListItem_completed
     );
 
     const newBucketListItem = {
-      description: this.state.description,
-      comment: this.state.comment,
+      bucketListItem_name: this.state.bucketListItem_name,
+      bucketListItem_comment: this.state.bucketListItem_comment,
       date: this.state.date,
-      completed: this.state.completed
+      bucketListItem_completed: this.state.bucketListItem_completed
     };
 
     axios
@@ -38,8 +38,8 @@ export default class createItem extends Component {
       .then(res => console.log(res.data));
 
     this.setState({
-      description: "",
-      comment: "Added to list.",
+      bucketListItem_name: "",
+      bucketListItem_comment: "Added to list.",
       date: "",
       completed: false
     });
@@ -52,9 +52,9 @@ export default class createItem extends Component {
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            name="description"
+            name="bucketListItem_name"
             placeholder="What would you like to do?"
-            value={this.state.description}
+            value={this.state.bucketListItem_name}
             onChange={this.handleChange}
           />
           <input type="submit" value="SUBMIT" className="btn btn-primary" />
