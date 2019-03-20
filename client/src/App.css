@@ -1,5 +1,10 @@
+body{
+  background-color: azure;
+}
+
 .navbar {
   display: inline-flex;
+  background-color: aqua;
 }
 
 ul {

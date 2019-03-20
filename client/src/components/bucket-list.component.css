@@ -1,7 +1,3 @@
-.bucket-list-display {
-  display: block;
-}
-
-.bucket-list-item {
-  display: inline;
+.bucket-list-card {
+  background-color: aliceblue;
 }

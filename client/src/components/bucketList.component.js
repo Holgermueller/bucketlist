@@ -1,19 +1,30 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { Grid, GridCell } from "@rmwc/grid";
+import { Card } from "@rmwc/card";
+import { Elevation } from "@rmwc/elevation";
+import { ListDivider } from "@rmwc/list";
+import "@material/list";
+import { Typography } from "@rmwc/typography";
 import axios from "axios";
 import "./bucket-list.component.css";
 //import API from "../utils/API";
 
 const ItemOnList = props => (
-  <li className="bucket-list-item"> 
-    <div>
-{props.itemOnList.bucketListItem_name}
-    </div>
-  <div>
-    <Link to={"/edit/"+ props.itemOnList._id}>Edit</Link>
-  </div>
-  </li>
-)
+  <GridCell className="bucket-list-item">
+    <Elevation>
+      <Card className="bucket-list-card">
+        <Typography use="headline4">
+          <div>{props.itemOnList.bucketListItem_name}</div>
+        </Typography>
+        <ListDivider />
+        <div>
+          <Link to={"/edit/" + props.itemOnList._id}>Edit</Link>
+        </div>
+      </Card>
+    </Elevation>
+  </GridCell>
+);
 
 export default class bucketList extends Component {
   constructor(props) {
@@ -24,34 +35,48 @@ export default class bucketList extends Component {
   }
 
   componentDidMount = () => {
-    axios.get("http://localhost:3001/bucketList/")
-    .then(response => {
-      this.setState({itemsOnList: response.data});
-    }).catch(err => {
-      console.log(err);
-    })
+    axios
+      .get("http://localhost:3001/bucketList/")
+      .then(response => {
+        this.setState({ itemsOnList: response.data });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   loadBucketListItems = () => {
-    return this.state.itemsOnList.map(function(listItem, i){
-      return <ItemOnList itemOnList={listItem} key={i}/>;
-    })
+    return this.state.itemsOnList.map(function(listItem, i) {
+      return <ItemOnList itemOnList={listItem} key={i} />;
+    });
   };
 
   render() {
     return (
       <div>
-        <h3>Welcome to your Bucket List</h3>
+        <Grid>
+          <GridCell>
+            <Elevation z={7}>
+              <Card>
+                <h3>Welcome to your Bucket List</h3>
+              </Card>
+            </Elevation>
+          </GridCell>
+        </Grid>
 
         <div>
           {this.state.itemsOnList ? (
-            <ul className="bucket-list-display">
+            <Grid className="bucket-list-display">
               {this.loadBucketListItems()}
-            </ul>
+            </Grid>
           ) : (
-            <ul>
-              <li>Enter something already!</li>
-            </ul>
+            <Grid>
+              <GridCell>
+                <Elevation>
+                  <Card>Enter something already!</Card>
+                </Elevation>
+              </GridCell>
+            </Grid>
           )}
         </div>
       </div>
