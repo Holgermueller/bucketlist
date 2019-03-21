@@ -6,9 +6,8 @@ import { Elevation } from "@rmwc/elevation";
 import { ListDivider } from "@rmwc/list";
 import "@material/list";
 import { Typography } from "@rmwc/typography";
-import axios from "axios";
 import "./bucket-list.component.css";
-//import API from "../utils/API";
+import API from "../utils/API";
 
 const ItemOnList = props => (
   <GridCell className="bucket-list-item">
@@ -35,8 +34,7 @@ export default class bucketList extends Component {
   }
 
   componentDidMount = () => {
-    axios
-      .get("http://localhost:3001/bucketList/")
+    API.loadBucketList()
       .then(response => {
         this.setState({ itemsOnList: response.data });
       })

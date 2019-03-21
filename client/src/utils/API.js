@@ -2,13 +2,14 @@ import axios from "axios";
 
 const API = {
   enterBucketListItem: function(newBucketListItem) {
-    return axios
-      .post("http://localhost:3001/bucketList/add", newBucketListItem)
-      .then(res => console.log(res.data));
+    return axios.post(
+      "http://localhost:3001/bucketList/add",
+      newBucketListItem
+    );
   },
 
-  getBucketListItems: function() {
-    return axios.get("/");
+  loadBucketList: function() {
+    return axios.get("http://localhost:3001/bucketList/");
   }
 };
 

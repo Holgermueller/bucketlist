@@ -30,12 +30,10 @@ export default class createItem extends Component {
     );
 
     API.enterBucketListItem({
-      newBucketListItem: {
         bucketListItem_name: this.state.bucketListItem_name,
         bucketListItem_comment: this.state.bucketListItem_comment,
         date: this.state.date,
         bucketListItem_completed: this.state.bucketListItem_completed
-      }
     })
       .then(res => console.log(res))
       .catch(err => console.log(err));
