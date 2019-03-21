@@ -1,31 +1,32 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Grid, GridCell } from "@rmwc/grid";
-import { Card } from "@rmwc/card";
-import { Elevation } from "@rmwc/elevation";
-import { ListDivider } from "@rmwc/list";
-import "@material/list";
-import { Typography } from "@rmwc/typography";
+import Grid from "@material-ui/core/Grid";
+import GridList from "@material-ui/core/GridList";
+import Card from "@material-ui/core/Card";
+import Paper from "@material-ui/core/Paper";
+import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
 import "./bucket-list.component.css";
 import API from "../utils/API";
 
+const headerStyle = {
+  textAlign: "center"
+};
+
 const ItemOnList = props => (
-  <GridCell className="bucket-list-item">
-    <Elevation>
-      <Card className="bucket-list-card">
-        <Typography use="headline4">
-          <div>{props.itemOnList.bucketListItem_name}</div>
-        </Typography>
-        <ListDivider />
-        <div>
-          <Link to={"/edit/" + props.itemOnList._id}>Edit</Link>
-        </div>
-      </Card>
-    </Elevation>
-  </GridCell>
+  <GridList className="bucket-list-item">
+    <Card className="bucket-list-card">
+      <Typography variant="h4">
+        {props.itemOnList.bucketListItem_name}
+      </Typography>
+      <Divider />
+      Status: <Typography>{props.itemOnList.bucketListItem_comment}</Typography>
+      <Link to={"/edit/" + props.itemOnList._id}>Edit</Link>
+    </Card>
+  </GridList>
 );
 
-export default class bucketList extends Component {
+export default class BucketList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,28 +53,28 @@ export default class bucketList extends Component {
   render() {
     return (
       <div>
-        <Grid>
-          <GridCell>
-            <Elevation z={7}>
-              <Card>
-                <h3>Welcome to your Bucket List</h3>
-              </Card>
-            </Elevation>
-          </GridCell>
-        </Grid>
+        <Card z={7}>
+          <Typography variant="h6" style={headerStyle}>
+            Welcome to your Bucket List
+          </Typography>
+        </Card>
+        <br />
 
         <div>
           {this.state.itemsOnList ? (
-            <Grid className="bucket-list-display">
-              {this.loadBucketListItems()}
-            </Grid>
+            <Paper>
+              {" "}
+              <Grid className="bucket-list-display">
+                {this.loadBucketListItems()}
+              </Grid>
+            </Paper>
           ) : (
             <Grid>
-              <GridCell>
-                <Elevation>
+              <GridList>
+                <Paper>
                   <Card>Enter something already!</Card>
-                </Elevation>
-              </GridCell>
+                </Paper>
+              </GridList>
             </Grid>
           )}
         </div>
