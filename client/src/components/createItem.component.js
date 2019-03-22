@@ -6,10 +6,7 @@ export default class createItem extends Component {
     super(props);
 
     this.state = {
-      bucketListItem_name: "",
-      bucketListItem_comment: "Added to list.",
-      date: "",
-      bucketListItem_completed: false
+      bucketListItem_name: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,25 +21,17 @@ export default class createItem extends Component {
     e.preventDefault();
     console.log(
       "You entered: " +
-        this.state.bucketListItem_name +
-        " " +
-        this.state.bucketListItem_completed
+        this.state.bucketListItem_name
     );
 
     API.enterBucketListItem({
-        bucketListItem_name: this.state.bucketListItem_name,
-        bucketListItem_comment: this.state.bucketListItem_comment,
-        date: this.state.date,
-        bucketListItem_completed: this.state.bucketListItem_completed
+        bucketListItem_name: this.state.bucketListItem_name
     })
       .then(res => console.log(res))
       .catch(err => console.log(err));
 
     this.setState({
-      bucketListItem_name: "",
-      bucketListItem_comment: "Added to list.",
-      date: "",
-      completed: false
+      bucketListItem_name: ""
     });
   };
 
