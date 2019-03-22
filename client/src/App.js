@@ -8,15 +8,23 @@ import CompletedItems from "./components/completedItems.components";
 import Footer from "./components/footer.component";
 import "./App.css";
 
+const appHeader = {
+  textAlign: "center"
+}
+
+const subHeader = {
+  textAlign: "center"
+}
+
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="App container">
+          <h2 style={appHeader}>The Bucket List</h2>
+          <h4 style={subHeader}>Helping you get all your affairs in order</h4>
+          <br />
           <Navbar />
-
-          <h2>The Bucket List</h2>
-          <h4>Helping you get all your affairs in order</h4>
           <br />
           <Route path="/" exact component={BucketList} />
           <Route path="/edit/:id" component={EditItem} />

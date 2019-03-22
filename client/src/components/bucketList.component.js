@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
-import GridList from "@material-ui/core/GridList";
 import Card from "@material-ui/core/Card";
-import Paper from "@material-ui/core/Paper";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 import "./bucket-list.component.css";
@@ -13,17 +11,28 @@ const headerStyle = {
   textAlign: "center"
 };
 
+const bucketListItem = {
+  textAlign: "center",
+  marginBottom: "5px"
+}
+
+const editLink = {
+  textDecoration: "none",
+  float: "right",
+  padding: "4px"
+}
+
 const ItemOnList = props => (
-  <GridList className="bucket-list-item">
-    <Card className="bucket-list-card">
+
+    <Card className="bucket-list-card" style={bucketListItem}>
       <Typography variant="h4">
         {props.itemOnList.bucketListItem_name}
       </Typography>
       <Divider />
       Status: <Typography>{props.itemOnList.bucketListItem_comment}</Typography>
-      <Link to={"/edit/" + props.itemOnList._id}>Edit</Link>
+      <Link to={"/edit/" + props.itemOnList._id} style={editLink}>Edit</Link>
     </Card>
-  </GridList>
+ 
 );
 
 export default class BucketList extends Component {
@@ -62,19 +71,12 @@ export default class BucketList extends Component {
 
         <div>
           {this.state.itemsOnList ? (
-            <Paper>
-              {" "}
               <Grid className="bucket-list-display">
                 {this.loadBucketListItems()}
               </Grid>
-            </Paper>
           ) : (
             <Grid>
-              <GridList>
-                <Paper>
                   <Card>Enter something already!</Card>
-                </Paper>
-              </GridList>
             </Grid>
           )}
         </div>

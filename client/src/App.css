@@ -1,19 +1,5 @@
 body{
-  background-color: azure;
-}
-
-.navbar {
-  display: inline-flex;
-  background-color: aqua;
-}
-
-ul {
-  list-style: none;
-  display: inline-flex;
-}
-
-link {
-  text-decoration: none;
+  background-color: aliceblue;
 }
 
 h2 {
