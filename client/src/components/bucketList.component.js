@@ -14,25 +14,23 @@ const headerStyle = {
 const bucketListItem = {
   textAlign: "center",
   marginBottom: "5px"
-}
+};
 
 const editLink = {
   textDecoration: "none",
   float: "right",
   padding: "4px"
-}
+};
 
 const ItemOnList = props => (
-
-    <Card className="bucket-list-card" style={bucketListItem}>
-      <Typography variant="h4">
-        {props.itemOnList.bucketListItem_name}
-      </Typography>
-      <Divider />
-      Status: <Typography>{props.itemOnList.bucketListItem_comment}</Typography>
-      <Link to={"/edit/" + props.itemOnList._id} style={editLink}>Edit</Link>
-    </Card>
- 
+  <Card className="bucket-list-card" style={bucketListItem}>
+    <Typography variant="h4">{props.itemOnList.bucketListItem_name}</Typography>
+    <Divider />
+    Status: <Typography>{props.itemOnList.bucketListItem_comment}</Typography>
+    <Link to={"/edit/" + props.itemOnList._id} style={editLink}>
+      Edit
+    </Link>
+  </Card>
 );
 
 export default class BucketList extends Component {
@@ -71,12 +69,12 @@ export default class BucketList extends Component {
 
         <div>
           {this.state.itemsOnList ? (
-              <Grid className="bucket-list-display">
-                {this.loadBucketListItems()}
-              </Grid>
+            <Grid className="bucket-list-display">
+              {this.loadBucketListItems()}
+            </Grid>
           ) : (
             <Grid>
-                  <Card>Enter something already!</Card>
+              <Card>Enter something already!</Card>
             </Grid>
           )}
         </div>
