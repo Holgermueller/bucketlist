@@ -11,9 +11,7 @@ export default class editItem extends Component {
     this.onChangeBucketListItemComment = this.onChangeBucketListItemComment.bind(
       this
     );
-    this.onChangeBucketListItemDate = this.onChangeBucketListItemDate.bind(
-      this
-    );
+
     this.onChangeBucketListItemComment = this.onChangeBucketListItemComment.bind(
       this
     );
@@ -22,7 +20,6 @@ export default class editItem extends Component {
     this.state = {
       bucketListItem_name: "",
       bucketListItem_comment: "",
-      date: "",
       bucketListItem_completed: false
     };
   }
@@ -34,7 +31,6 @@ export default class editItem extends Component {
         this.setState({
           bucketListItem_name: response.data.bucketListItem_name,
           bucketListItem_comment: response.data.bucketListItem_comment,
-          date: response.data.date,
           bucketListItem_completed: response.data.bucketListItem_completed
         });
       })
@@ -55,12 +51,6 @@ export default class editItem extends Component {
     });
   }
 
-  onChangeBucketListItemDate(e) {
-    this.setState({
-      date: e.target.value
-    });
-  }
-
   onChangeBucketListItemCompleted(e) {
     this.setState({
       bucketListItem_completed: e.target.value
@@ -72,12 +62,11 @@ export default class editItem extends Component {
     const updateObj = {
       bucketListItem_name: this.state.bucketListItem_name,
       bucketListItem_comment: this.state.bucketListItem_comment,
-      date: this.state.date,
       bucketListItem_completed: this.state.bucketListItem_completed
     };
     axios
       .post(
-        "http://localHost:3001/bucketList/update" + this.props.match.params.id,
+        "http://localHost:3001/bucketList/update/" + this.props.match.params.id,
         updateObj
       )
       .then(res => console.log(res.data));
@@ -103,13 +92,6 @@ export default class editItem extends Component {
             className="form-control"
             value={this.state.bucketListItem_comment}
             onChange={this.onChangeBucketListItemComment}
-          />
-
-          <input
-            type="text"
-            className="form-control"
-            value={this.state.date}
-            onChange={this.onChangeBucketListItemDate}
           />
 
           <input
