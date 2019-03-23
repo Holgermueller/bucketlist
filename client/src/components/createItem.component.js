@@ -1,5 +1,20 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import Card from "@material-ui/core/Card";
+import ContainedButtons from "./buttons/submitButton.component";
+
+const cardStyles = {
+  textAlign: "center"
+}
+
+const formStyles = {
+  padding: "5%",
+  display: "inline-grid"
+}
+
+const inputStyles = {
+  borderRadius: "15px"
+}
 
 export default class createItem extends Component {
   constructor(props) {
@@ -19,13 +34,10 @@ export default class createItem extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(
-      "You entered: " +
-        this.state.bucketListItem_name
-    );
+    console.log("You entered: " + this.state.bucketListItem_name);
 
     API.enterBucketListItem({
-        bucketListItem_name: this.state.bucketListItem_name
+      bucketListItem_name: this.state.bucketListItem_name
     })
       .then(res => console.log(res))
       .catch(err => console.log(err));
@@ -38,17 +50,22 @@ export default class createItem extends Component {
   render() {
     return (
       <div>
-        <h3>Add an item to your Bucket List!</h3>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="bucketListItem_name"
-            placeholder="What would you like to do?"
-            value={this.state.bucketListItem_name}
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="SUBMIT" className="btn btn-primary" />
-        </form>
+        <Card style={cardStyles}>
+          <h3>Add an item to your Bucket List!</h3>
+          <hr />
+          <form onSubmit={this.handleSubmit}
+          style={formStyles}>
+            <input
+              type="text"
+              name="bucketListItem_name"
+              style={inputStyles}
+              placeholder="What would you like to do?"
+              value={this.state.bucketListItem_name}
+              onChange={this.handleChange}
+            />
+            <ContainedButtons />
+          </form>
+        </Card>
       </div>
     );
   }

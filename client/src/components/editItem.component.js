@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import ContainedButtons from "./buttons/submitButton.component";
 import axios from "axios";
+//import API from "../utils/API";
 
 export default class editItem extends Component {
   constructor(props) {
@@ -15,6 +17,7 @@ export default class editItem extends Component {
     this.onChangeBucketListItemComment = this.onChangeBucketListItemComment.bind(
       this
     );
+
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
@@ -24,7 +27,7 @@ export default class editItem extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount(id) {
     axios
       .get("http://localhost:3001/bucketList/" + this.props.match.params.id)
       .then(response => {
@@ -101,7 +104,7 @@ export default class editItem extends Component {
             onChange={this.onChangeBucketListItemCompleted}
           />
 
-          <input type="submit" value="UPDATE" className="submit" />
+          <ContainedButtons />
         </form>
       </div>
     );
