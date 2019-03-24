@@ -13,15 +13,20 @@ function ContainedButtons(props) {
   const { classes } = props;
   return (
     <div>
-      <Button type="submit" variant="contained" color="primary" className={classes.button}>
-      SUBMIT
+      <Button
+        type="submit"
+        variant="contained"
+        color="primary"
+        className={classes.button}
+      >
+        SUBMIT
       </Button>
     </div>
   );
 }
 
 ContainedButtons.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(ContainedButtons);

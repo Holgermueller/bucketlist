@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ContainedButtons from "./buttons/submitButton.component";
 import CancelButton from "./buttons/cancelButton.compnent";
+import CompleteSwitch from "./buttons/completeSwitch.component";
 import axios from "axios";
 //import API from "../utils/API";
 
@@ -98,8 +99,7 @@ export default class editItem extends Component {
             onChange={this.onChangeBucketListItemComment}
           />
 
-          <input
-            type="text"
+          <CompleteSwitch
             className="form-control"
             value={this.state.bucketListItem_completed}
             onChange={this.onChangeBucketListItemCompleted}
