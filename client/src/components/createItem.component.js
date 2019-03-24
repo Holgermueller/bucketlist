@@ -5,16 +5,16 @@ import ContainedButtons from "./buttons/submitButton.component";
 
 const cardStyles = {
   textAlign: "center"
-}
+};
 
 const formStyles = {
   padding: "5%",
   display: "inline-grid"
-}
+};
 
 const inputStyles = {
   borderRadius: "15px"
-}
+};
 
 export default class createItem extends Component {
   constructor(props) {
@@ -53,8 +53,7 @@ export default class createItem extends Component {
         <Card style={cardStyles}>
           <h3>Add an item to your Bucket List!</h3>
           <hr />
-          <form onSubmit={this.handleSubmit}
-          style={formStyles}>
+          <form onSubmit={this.handleSubmit} style={formStyles}>
             <input
               type="text"
               name="bucketListItem_name"

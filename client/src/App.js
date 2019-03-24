@@ -6,15 +6,16 @@ import CreateItem from "./components/createItem.component";
 import EditItem from "./components/editItem.component";
 import CompletedItems from "./components/completedItems.components";
 import Footer from "./components/footer.component";
+import NavTabs from "./components/Nav/navbar.components";
 import "./App.css";
 
 const appHeader = {
   textAlign: "center"
-}
+};
 
 const subHeader = {
   textAlign: "center"
-}
+};
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           <h4 style={subHeader}>Helping you get all your affairs in order</h4>
           <br />
           <Navbar />
+          <NavTabs />
           <br />
           <Route path="/" exact component={BucketList} />
           <Route path="/edit/:id" component={EditItem} />

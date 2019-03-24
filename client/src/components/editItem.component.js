@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ContainedButtons from "./buttons/submitButton.component";
+import CancelButton from "./buttons/cancelButton.compnent";
 import axios from "axios";
 //import API from "../utils/API";
 
@@ -105,6 +106,8 @@ export default class editItem extends Component {
           />
 
           <ContainedButtons />
+
+          <CancelButton />
         </form>
       </div>
     );
