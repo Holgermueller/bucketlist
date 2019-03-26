@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Card from "@material-ui/core/Card";
-import ContainedButtons from "./buttons/submitButton.component";
+import TextField from "@material-ui/core/TextField";
+import SubmitButton from "./buttons/submitButton.component";
 
 const cardStyles = {
   textAlign: "center"
@@ -12,8 +13,8 @@ const formStyles = {
   display: "inline-grid"
 };
 
-const inputStyles = {
-  borderRadius: "15px"
+const textField = {
+  width: "200"
 };
 
 export default class createItem extends Component {
@@ -54,15 +55,15 @@ export default class createItem extends Component {
           <h3>Add an item to your Bucket List!</h3>
           <hr />
           <form onSubmit={this.handleSubmit} style={formStyles}>
-            <input
-              type="text"
+            <TextField
+              style={textField}
               name="bucketListItem_name"
-              style={inputStyles}
               placeholder="What would you like to do?"
               value={this.state.bucketListItem_name}
               onChange={this.handleChange}
+              margin="normal"
             />
-            <ContainedButtons />
+            <SubmitButton />
           </form>
         </Card>
       </div>

@@ -9,7 +9,7 @@ const styles = theme => ({
   }
 });
 
-function ContainedButtons(props) {
+function SubmitButton(props) {
   const { classes } = props;
   return (
     <div>
@@ -25,8 +25,8 @@ function ContainedButtons(props) {
   );
 }
 
-ContainedButtons.propTypes = {
+SubmitButton.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ContainedButtons);
+export default withStyles(styles)(SubmitButton);

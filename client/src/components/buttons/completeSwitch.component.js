@@ -1,13 +1,17 @@
 import React from "react";
-import Switch from "@material-ui/core/Switch";
 
 class CompleteSwitch extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
+
+  
+
   render() {
-    return (
-      <div>
-        <Switch color="primary" />
-      </div>
-    );
+    return <div />;
   }
 }
 

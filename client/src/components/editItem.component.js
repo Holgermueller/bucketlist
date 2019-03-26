@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import ContainedButtons from "./buttons/submitButton.component";
+import TextField from "@material-ui/core/TextField";
+import SubmitButton from "./buttons/submitButton.component";
 import CancelButton from "./buttons/cancelButton.compnent";
-import CompleteSwitch from "./buttons/completeSwitch.component";
+import Switch from "@material-ui/core/Switch";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import axios from "axios";
 //import API from "../utils/API";
 
@@ -56,11 +58,11 @@ export default class editItem extends Component {
     });
   }
 
-  onChangeBucketListItemCompleted(e) {
+  onChangeBucketListItemCompleted = bucketListItem_completed => e => {
     this.setState({
-      bucketListItem_completed: e.target.value
+      bucketListItem_completed: e.target.checked
     });
-  }
+  };
 
   onSubmit(e) {
     e.preventDefault();
@@ -85,27 +87,33 @@ export default class editItem extends Component {
         <h3>Edit your Bucket List Item!</h3>
 
         <form onSubmit={this.onSubmit}>
-          <input
+          <TextField
             type="text"
             className="form-control"
             value={this.state.bucketListItem_name}
             onChange={this.onChangeBucketListItemName}
           />
 
-          <input
+          <TextField
             type="text"
             className="form-control"
             value={this.state.bucketListItem_comment}
             onChange={this.onChangeBucketListItemComment}
           />
 
-          <CompleteSwitch
-            className="form-control"
-            value={this.state.bucketListItem_completed}
-            onChange={this.onChangeBucketListItemCompleted}
+          <FormControlLabel
+            control={
+              <Switch
+                className="form-control"
+                checked={this.state.bucketListItem_completed}
+                value={this.state.bucketListItem_completed}
+                onChange={this.onChangeBucketListItemCompleted}
+              />
+            }
+            label="Completed?"
           />
 
-          <ContainedButtons />
+          <SubmitButton />
 
           <CancelButton />
         </form>
