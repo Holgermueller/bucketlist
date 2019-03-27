@@ -48,7 +48,13 @@ export default class BucketList extends Component {
   componentDidMount = () => {
     API.loadBucketList()
       .then(response => {
-        this.setState({ itemsOnList: response.data });
+        let activeItems = [];
+        response.data.forEach(activeItem => {
+          if (activeItem.bucketListItem_completed === false) {
+            activeItems.push(activeItem);
+          }
+        });
+        this.setState({ itemsOnList: activeItems });
       })
       .catch(err => {
         console.log(err);

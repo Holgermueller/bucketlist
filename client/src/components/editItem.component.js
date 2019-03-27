@@ -105,6 +105,7 @@ export default class editItem extends Component {
             control={
               <Switch
                 className="form-control"
+                color="primary"
                 checked={this.state.bucketListItem_completed}
                 value={this.state.bucketListItem_completed}
                 onChange={this.onChangeBucketListItemCompleted('bucketListItem_completed')}
