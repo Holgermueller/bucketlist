@@ -1,75 +1,50 @@
-import React from "react";
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
-import AppBar from "@material-ui/core/AppBar";
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core/styles";
-import NoSsr from "@material-ui/core/NoSsr";
-import Typography from "@material-ui/core/Typography";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Paper from "@material-ui/core/Paper";
 
-function TabContainer(props) {
-  return (
-    <Typography component="div" style={{ padding: 8 * 3 }}>
-      {props.children}
-    </Typography>
-  );
+const navbar = {
+  borderRadius: "15px"
 }
 
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired
-};
-
-function LinkTab(props) {
-  return <Tab component="a" onClick={e => e.preventDefault()} {...props} />;
+const allNavLinks = {
+  display: "inline-flex"
 }
 
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.paper
-  }
-});
+const navbarItem = {
+  listStyle: "none"
+}
 
-class NavTabs extends React.Component {
-  state = {
-    value: 0
-  };
+const navLink = {
+  textDecoration: "none",
+  padding: "2px"
+}
 
-  handleChange = (e, value) => {
-    this.setState({ value });
-  };
-
+export default class Navbar extends Component {
   render() {
-    const { classes } = this.props;
-    const { value } = this.state;
-
     return (
-      <NoSsr>
-        <div className={classes.root}>
-          <AppBar position="static">
-            <Tabs
-              value={value}
-              onChange={this.handleChange}
-              variant="fullWidth"
-              indicatorColor="primary"
-              textColor="primary"
-            >
-              <LinkTab label="My List" href="/" />
-              <LinkTab label="Add To List" href="/create" />
-              <LinkTab label="Completed List" href="/completed" />
-            </Tabs>
-          </AppBar>
-          {value === 0 && <TabContainer>My List</TabContainer>}
-          {value === 1 && <TabContainer>Add To List</TabContainer>}
-          {value === 2 && <TabContainer>Completed List</TabContainer>}
-        </div>
-      </NoSsr>
+      <header>
+        <Paper style={navbar}>
+          <div className="collapse nav-collapse">
+            <ul style={allNavLinks}>
+              <li style={navbarItem}>
+                <Link to="/" style={navLink}>
+                  My List
+                </Link>
+              </li>
+              <li style={navbarItem}>
+                <Link to="/create" style={navLink}>
+                  Create Item
+                </Link>
+              </li>
+              <li style={navbarItem}>
+                <Link to="/completed" style={navLink}>
+                  Completed Items!
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </Paper>
+      </header>
     );
   }
 }
-
-NavTabs.propTypes = {
-  classes: PropTypes.object.isRequired
-};
-
-export default withStyles(styles)(NavTabs);

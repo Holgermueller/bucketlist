@@ -107,7 +107,7 @@ export default class editItem extends Component {
                 className="form-control"
                 checked={this.state.bucketListItem_completed}
                 value={this.state.bucketListItem_completed}
-                onChange={this.onChangeBucketListItemCompleted}
+                onChange={this.onChangeBucketListItemCompleted('bucketListItem_completed')}
               />
             }
             label="Completed?"

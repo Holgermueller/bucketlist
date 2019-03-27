@@ -19,7 +19,11 @@ const bucketListItem = {
 const editLink = {
   textDecoration: "none",
   float: "right",
-  padding: "4px"
+  padding: "4px",
+  color: "ghostwhite",
+  backgroundColor: "blue",
+  borderRadius: "15px",
+  margin: "0px 2px 2px 0px"
 };
 
 const ItemOnList = props => (
