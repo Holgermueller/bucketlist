@@ -39,4 +39,11 @@ blRoutes.route("/update/:id").post(function(req, res) {
     .catch(err => res.status(404).send(err));
 });
 
+blRoutes.route("/delete/:id").post(function(req, res) {
+  BucketListItem.deleteOne({_id: req.param.id}, function(err, blItem){
+    if (err) res.send(err);
+    else res.json("Removal success.");
+  })
+})
+
 module.exports = blRoutes;
