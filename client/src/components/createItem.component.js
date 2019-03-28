@@ -18,12 +18,17 @@ const textField = {
   width: "200"
 };
 
+const error = {
+  color: "red"
+}
+
 export default class createItem extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      bucketListItem_name: ""
+      bucketListItem_name: "",
+      error: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,17 +41,23 @@ export default class createItem extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("You entered: " + this.state.bucketListItem_name);
+    let bucketListItemName =
+      this.state.bucketListItem_name.charAt(0).toUpperCase() +
+      this.state.bucketListItem_name.slice(1).toLowerCase();
 
-    API.enterBucketListItem({
-      bucketListItem_name: this.state.bucketListItem_name
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    if (bucketListItemName === "") {
+      this.setState({error: "You must enter something."});
+    } else {
+      API.enterBucketListItem({
+        bucketListItem_name: bucketListItemName
+      })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
 
-    this.setState({
-      bucketListItem_name: ""
-    });
+      this.setState({
+        bucketListItem_name: ""
+      });
+    }
   };
 
   render() {
@@ -56,6 +67,7 @@ export default class createItem extends Component {
           <h3>Add an item to your Bucket List!</h3>
           <hr />
           <form onSubmit={this.handleSubmit} style={formStyles}>
+            <h2 style={error}>{this.state.error}</h2>
             <TextField
               style={textField}
               name="bucketListItem_name"

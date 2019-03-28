@@ -21,7 +21,7 @@ const editLink = {
   float: "right",
   padding: "4px",
   color: "ghostwhite",
-  backgroundColor: "blue",
+  backgroundColor: "azure",
   borderRadius: "15px",
   margin: "0px 2px 2px 0px"
 };

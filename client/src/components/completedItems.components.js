@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
+import Typography from "@material-ui/core/Typography";
+import API from "../utils/API";
 
 const completedListDisplay = {};
 
+const headerStyle = {};
+
+const completedListItem = { textAlign: "center", marginBottom: "5px" };
+
 const CompletedItem = props => (
-  <Card>
+  <Card style={completedListItem}>
     <p>{props.completedItemOnList.bucketListItem_name}</p>
   </Card>
 );
@@ -20,8 +25,7 @@ export default class completedItems extends Component {
   }
 
   componentDidMount = () => {
-    axios
-      .get("http://localhost:3001/bucketList")
+    API.loadBucketList()
       .then(response => {
         let completedItems = [];
         response.data.forEach(completedItem => {
@@ -46,7 +50,9 @@ export default class completedItems extends Component {
     return (
       <div>
         <Card>
-          <h1>Your Completed Items!</h1>
+          <Typography variant="h6" style={headerStyle}>
+            Your Completed Items!
+          </Typography>
         </Card>
 
         <div>
