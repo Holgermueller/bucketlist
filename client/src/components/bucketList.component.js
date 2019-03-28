@@ -20,8 +20,8 @@ const editLink = {
   textDecoration: "none",
   float: "right",
   padding: "4px",
-  color: "ghostwhite",
-  backgroundColor: "azure",
+  color: "aliceblue",
+  backgroundColor: "#00FFFF",
   borderRadius: "15px",
   margin: "0px 2px 2px 0px"
 };

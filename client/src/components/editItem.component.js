@@ -4,6 +4,7 @@ import SubmitButton from "./buttons/submitButton.component";
 import CancelButton from "./buttons/cancelButton.compnent";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import DeleteItemDialog from "./dialogs/deleteItemDialog.component";
 import axios from "axios";
 //import API from "../utils/API";
 
@@ -108,7 +109,9 @@ export default class editItem extends Component {
                 color="primary"
                 checked={this.state.bucketListItem_completed}
                 value={this.state.bucketListItem_completed}
-                onChange={this.onChangeBucketListItemCompleted('bucketListItem_completed')}
+                onChange={this.onChangeBucketListItemCompleted(
+                  "bucketListItem_completed"
+                )}
               />
             }
             label="Completed?"
@@ -117,6 +120,11 @@ export default class editItem extends Component {
           <SubmitButton />
 
           <CancelButton />
+
+          <hr />
+
+          <DeleteItemDialog />
+
         </form>
       </div>
     );
