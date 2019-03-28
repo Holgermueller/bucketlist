@@ -77,7 +77,8 @@ export default class editItem extends Component {
         "http://localHost:3001/bucketList/update/" + this.props.match.params.id,
         updateObj
       )
-      .then(res => console.log(res.data));
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
 
     this.props.history.push("/");
   }
