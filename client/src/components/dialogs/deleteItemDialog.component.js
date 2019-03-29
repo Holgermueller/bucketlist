@@ -8,6 +8,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import Divider from "@material-ui/core/Divider";
+import PropTypes from "prop-types";
 import axios from "axios";
 
 const deleteButton = {
@@ -34,11 +35,9 @@ export default class DeleteAlertDialog extends React.Component {
     this.setState({ open: false });
   };
 
-  handleDelete = e => {
-    e.preventDefault();
-    console.log("click");
+  handleDelete = () => {
     axios
-      .post("http://localhost:3001/delete/" + this.props.id)
+      .post("http://localhost:3001/delete/" + this.props.match.params.id)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
   };
@@ -67,7 +66,7 @@ export default class DeleteAlertDialog extends React.Component {
           <Divider />
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Are you sure you want to delete this item?
+              Are you sure you want to delete ?
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -87,3 +86,7 @@ export default class DeleteAlertDialog extends React.Component {
     );
   }
 }
+
+DeleteAlertDialog.propTypes = {
+  classes: PropTypes.object.isRequired
+};

@@ -40,7 +40,7 @@ blRoutes.route("/update/:id").post(function(req, res) {
 });
 
 blRoutes.route("/delete/:id").post(function(req, res) {
-  BucketListItem.deleteOne({_id: req.params.id}, function(err, blItem){
+  BucketListItem.findOneAndRemove({_id: req.params.id}, function(err, blItem){
     if (err) res.send(err);
     else res.json("Removal success.");
   })
