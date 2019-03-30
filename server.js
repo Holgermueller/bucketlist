@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3001;
 app.use(morgan("tiny"));
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("./client/build/index.html"));
+  app.use(express.static(path.join(__dirname, "client/build")));
 }
 
 app.use(cors());
@@ -31,7 +31,7 @@ connection.once("open", () => {
   console.log("db connection!");
 });
 
-app.use("/bucketList", blRoutes);
+app.use("/", blRoutes);
 
 app.listen(PORT, () => {
   console.log(`==> API Server now listening on PORT ${PORT}`);

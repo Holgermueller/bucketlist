@@ -8,6 +8,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import axios from "axios";
 //import API from "../utils/API";
 import Button from "@material-ui/core/Button";
+import API from "../utils/API";
 
 export default class editItem extends Component {
   constructor(props) {
@@ -34,8 +35,7 @@ export default class editItem extends Component {
   }
 
   componentDidMount(id) {
-    axios
-      .get("http://localhost:3001/bucketList/" + this.props.match.params.id)
+    API.editBucketListItem(id)
       .then(response => {
         this.setState({
           bucketListItem_name: response.data.bucketListItem_name,
