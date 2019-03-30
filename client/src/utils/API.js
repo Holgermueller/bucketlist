@@ -15,7 +15,7 @@ const API = {
   },
 
   loadBucketList: function() {
-    return axios.get("http://localhost:3001/bucketList");
+    return axios.get("/api/bucketList");
   }
 };
 

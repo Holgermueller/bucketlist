@@ -2,9 +2,10 @@ const express = require("express");
 const compression = require("compression");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
-const blRoutes = require("./routes/listRoutes");
+const blRoutes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
