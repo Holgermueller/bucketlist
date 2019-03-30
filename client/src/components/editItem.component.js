@@ -4,9 +4,10 @@ import SubmitButton from "./buttons/submitButton.component";
 import CancelButton from "./buttons/cancelButton.compnent";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import DeleteItemDialog from "./dialogs/deleteItemDialog.component";
+// import DeleteItemDialog from "./dialogs/deleteItemDialog.component";
 import axios from "axios";
 //import API from "../utils/API";
+import Button from "@material-ui/core/Button";
 
 export default class editItem extends Component {
   constructor(props) {
@@ -83,6 +84,13 @@ export default class editItem extends Component {
     this.props.history.push("/");
   }
 
+  handleDelete = (id) => {
+    axios
+      .delete("http://localhost:3001/bucketList/delete/" + this.props.match.params.id)
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <div>
@@ -124,7 +132,10 @@ export default class editItem extends Component {
 
           <hr />
 
-          <DeleteItemDialog />
+          {/* <DeleteItemDialog /> */}
+          <Button 
+          onClick={this.handleDelete}
+          >Delete</Button>
 
         </form>
       </div>

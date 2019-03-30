@@ -1,7 +1,7 @@
-const blRoutes = require("express").Router();
-let BucketListItem = require("../models/bucketListItemModel");
+const router = require("express").Router();
+const listController = require("../../controllers/bucketListController");
 
-blRoutes.route("/").get(function(req, res) {
+router.route("/").get(function(req, res) {
   BucketListItem.find(function(err, items) {
     if (err) {
       console.log(err);
@@ -11,14 +11,14 @@ blRoutes.route("/").get(function(req, res) {
   });
 });
 
-blRoutes.route("/:id").get(function(req, res) {
+router.route("/:id").get(function(req, res) {
   let id = req.params.id;
   BucketListItem.findById(id, function(err, blItem) {
     res.json(blItem);
   });
 });
 
-blRoutes.route("/add").post(function(req, res) {
+router.route("/add").post(function(req, res) {
   let bucketListItem = new BucketListItem(req.body);
   bucketListItem
     .save()
@@ -31,7 +31,7 @@ blRoutes.route("/add").post(function(req, res) {
     });
 });
 
-blRoutes.route("/update/:id").post(function(req, res) {
+router.route("/update/:id").post(function(req, res) {
   BucketListItem.findOneAndUpdate({ _id: req.params.id }, req.body, {
     new: true
   })
@@ -39,11 +39,11 @@ blRoutes.route("/update/:id").post(function(req, res) {
     .catch(err => res.status(404).send(err));
 });
 
-blRoutes.route("/delete/:id").post(function(req, res) {
+router.route("/delete/:id").post(function(req, res) {
   BucketListItem.findOneAndRemove({_id: req.params.id}, function(err, blItem){
     if (err) res.send(err);
     else res.json("Removal success.");
   })
 })
 
-module.exports = blRoutes;
+module.exports = router;
