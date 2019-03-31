@@ -6,9 +6,8 @@ import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 // import DeleteItemDialog from "./dialogs/deleteItemDialog.component";
 import axios from "axios";
-//import API from "../utils/API";
-import Button from "@material-ui/core/Button";
 import API from "../utils/API";
+import Button from "@material-ui/core/Button";
 
 export default class editItem extends Component {
   constructor(props) {
@@ -34,9 +33,10 @@ export default class editItem extends Component {
     };
   }
 
-  componentDidMount(id) {
-    API.editBucketListItem(id)
+  componentDidMount() {
+    API.editBucketListItem(this.props.match.params.id)
       .then(response => {
+        console.log(response);
         this.setState({
           bucketListItem_name: response.data.bucketListItem_name,
           bucketListItem_comment: response.data.bucketListItem_comment,
