@@ -34,9 +34,8 @@ export default class editItem extends Component {
   }
 
   componentDidMount() {
-    API.editBucketListItem(this.props.match.params.id)
+    API.getBucketListItemForEdit(this.props.match.params.id)
       .then(response => {
-        console.log(response);
         this.setState({
           bucketListItem_name: response.data.bucketListItem_name,
           bucketListItem_comment: response.data.bucketListItem_comment,
@@ -68,16 +67,13 @@ export default class editItem extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const updateObj = {
+    const updatedObj = {
       bucketListItem_name: this.state.bucketListItem_name,
       bucketListItem_comment: this.state.bucketListItem_comment,
       bucketListItem_completed: this.state.bucketListItem_completed
     };
-    axios
-      .post(
-        "http://localHost:3001/bucketList/update/" + this.props.match.params.id,
-        updateObj
-      )
+
+    API.submitItemEdits({updatedObj})
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = {
-  editBucketListItem: function(id) {
+  getBucketListItemForEdit: function(id) {
     return axios.get("/api/bucketList/" + id);
   },
 
@@ -11,6 +11,10 @@ const API = {
 
   loadBucketList: function() {
     return axios.get("/api/bucketList");
+  },
+
+  submitItemEdits: function(updatedObj) {
+    return axios.put("/api/bucketList/", updatedObj);
   }
 };
 
