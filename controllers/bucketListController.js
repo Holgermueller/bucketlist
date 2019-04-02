@@ -29,7 +29,7 @@ module.exports = {
     db.bucketListItem
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
-      .then(dbModel => req.json(dbModel))
+      .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
 };
