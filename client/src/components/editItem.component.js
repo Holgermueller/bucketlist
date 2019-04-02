@@ -83,6 +83,8 @@ export default class editItem extends Component {
     API.deleteItemFromList(this.props.match.params.id)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
+
+    this.props.history.push("/");
   };
 
   render() {
@@ -127,10 +129,7 @@ export default class editItem extends Component {
           <hr />
 
           {/* <DeleteItemDialog /> */}
-          <Button 
-          onClick={this.handleDelete}
-          >Delete</Button>
-
+          <Button onClick={this.handleDelete}>Delete</Button>
         </form>
       </div>
     );
