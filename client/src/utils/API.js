@@ -13,8 +13,12 @@ const API = {
     return axios.get("/api/bucketList");
   },
 
-  submitItemEdits: function(updatedObj) {
-    return axios.put("/api/bucketList/", updatedObj);
+  submitItemEdits: function(id) {
+    return axios.post("/api/bucketList/" + id);
+  },
+
+  deleteItemFromList: function(id) {
+    return axios.delete("/api/bucketList/" + id);
   }
 };
 

@@ -5,7 +5,6 @@ import CancelButton from "./buttons/cancelButton.compnent";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 // import DeleteItemDialog from "./dialogs/deleteItemDialog.component";
-import axios from "axios";
 import API from "../utils/API";
 import Button from "@material-ui/core/Button";
 
@@ -73,16 +72,15 @@ export default class editItem extends Component {
       bucketListItem_completed: this.state.bucketListItem_completed
     };
 
-    API.submitItemEdits({updatedObj})
+    API.submitItemEdits(this.props.match.params.id, updatedObj)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
 
     this.props.history.push("/");
   }
 
-  handleDelete = (id) => {
-    axios
-      .delete("http://localhost:3001/bucketList/delete/" + this.props.match.params.id)
+  handleDelete = id => {
+    API.deleteItemFromList(this.props.match.params.id)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
   };
