@@ -64,7 +64,7 @@ export default class editItem extends Component {
     });
   };
 
-  onSubmit(e) {
+  onSubmit = e => {
     e.preventDefault();
     const updatedObj = {
       bucketListItem_name: this.state.bucketListItem_name,
@@ -76,8 +76,8 @@ export default class editItem extends Component {
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
 
-    this.props.history.push("/");
-  }
+      this.props.history.push("/");
+  };
 
   handleDelete = id => {
     API.deleteItemFromList(this.props.match.params.id)

@@ -20,7 +20,7 @@ const textField = {
 
 const error = {
   color: "red"
-}
+};
 
 export default class createItem extends Component {
   constructor(props) {
@@ -46,7 +46,7 @@ export default class createItem extends Component {
       this.state.bucketListItem_name.slice(1).toLowerCase();
 
     if (bucketListItemName === "") {
-      this.setState({error: "You must enter something."});
+      this.setState({ error: "You must enter something." });
     } else {
       API.enterBucketListItem({
         bucketListItem_name: bucketListItemName
@@ -57,6 +57,8 @@ export default class createItem extends Component {
       this.setState({
         bucketListItem_name: ""
       });
+
+      this.props.history.push("/");
     }
   };
 
