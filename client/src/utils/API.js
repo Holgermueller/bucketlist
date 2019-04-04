@@ -14,7 +14,7 @@ const API = {
   },
 
   submitItemEdits: function(id, updatedObj) {
-    return axios.post("/api/bucketList/" + id, updatedObj);
+    return axios.put("/api/bucketList/" + id, updatedObj);
   },
 
   deleteItemFromList: function(id) {
