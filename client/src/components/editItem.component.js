@@ -4,9 +4,9 @@ import SubmitButton from "./buttons/submitButton.component";
 import CancelButton from "./buttons/cancelButton.compnent";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import DeleteItemDialog from "./dialogs/deleteItemDialog.component";
+import DeleteItemDialog from "./dialogs/deleteItemDialog.component";
 import API from "../utils/API";
-import Button from "@material-ui/core/Button";
+//import Button from "@material-ui/core/Button";
 
 export default class editItem extends Component {
   constructor(props) {
@@ -128,8 +128,8 @@ export default class editItem extends Component {
 
           <hr />
 
-          {/* <DeleteItemDialog /> */}
-          <Button onClick={this.handleDelete}>Delete</Button>
+          <DeleteItemDialog />
+          {/* <Button onClick={this.handleDelete}>Delete</Button> */}
         </form>
       </div>
     );

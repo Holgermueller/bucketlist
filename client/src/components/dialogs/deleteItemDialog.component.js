@@ -9,7 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import Divider from "@material-ui/core/Divider";
 import PropTypes from "prop-types";
-import axios from "axios";
+import API from "../../utils/API";
 
 const deleteButton = {
   backgroundColor: "purple",
@@ -35,11 +35,12 @@ export default class DeleteAlertDialog extends React.Component {
     this.setState({ open: false });
   };
 
-  handleDelete = () => {
-    axios
-      .post("http://localhost:3001/delete/" + this.props.match.params.id)
+  handleDelete = id => {
+    API.deleteItemFromList(this.props.match.params.id)
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
+
+    this.props.history.push("/");
   };
 
   render() {
