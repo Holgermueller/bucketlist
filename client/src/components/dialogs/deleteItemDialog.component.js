@@ -36,11 +36,12 @@ export default class DeleteAlertDialog extends React.Component {
   };
 
   handleDelete = id => {
-    API.deleteItemFromList(this.props.match.params.id)
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err));
+    // API.deleteItemFromList(this.props.match.params.id)
+    //   .then(res => console.log(res.data))
+    //   .catch(err => console.log(err));
 
-    this.props.history.push("/");
+    console.log(this.props.match.params.id)
+    //this.props.history.push("/");
   };
 
   render() {
@@ -67,7 +68,7 @@ export default class DeleteAlertDialog extends React.Component {
           <Divider />
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Are you sure you want to delete ?
+              Are you sure you want to delete this?
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -91,3 +92,4 @@ export default class DeleteAlertDialog extends React.Component {
 DeleteAlertDialog.propTypes = {
   classes: PropTypes.object.isRequired
 };
+
