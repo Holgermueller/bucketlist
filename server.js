@@ -33,6 +33,10 @@ connection.once("open", () => {
 
 app.use("/", blRoutes);
 
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`==> API Server now listening on PORT ${PORT}`);
 });
