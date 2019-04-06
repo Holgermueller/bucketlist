@@ -1,47 +1,55 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Paper from "@material-ui/core/Paper";
+import { Paper, Tabs, Tab } from "@material-ui/core";
 
 const navbar = {
   borderRadius: "15px"
-}
+};
 
 const allNavLinks = {
   display: "inline-flex"
-}
+};
 
 const navbarItem = {
-  listStyle: "none"
-}
-
-const navLink = {
-  textDecoration: "none",
+  listStyle: "none",
   padding: "2px"
-}
+};
 
 export default class Navbar extends Component {
+  state = {
+    value: 0
+  };
+
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
   render() {
     return (
       <header>
         <Paper style={navbar}>
           <div className="collapse nav-collapse">
-            <ul style={allNavLinks}>
-              <li style={navbarItem}>
-                <Link to="/" style={navLink}>
-                  My List
-                </Link>
-              </li>
-              <li style={navbarItem}>
-                <Link to="/create" style={navLink}>
-                  Create Item
-                </Link>
-              </li>
-              <li style={navbarItem}>
-                <Link to="/completed" style={navLink}>
-                  Completed Items!
-                </Link>
-              </li>
-            </ul>
+            <Tabs
+              style={allNavLinks}
+              value={this.state.value}
+              indicatorColor={"primary"}
+              onChange={this.handleChange}
+              centered
+            >
+              <Tab style={navbarItem} label="MY LIST" to="/" component={Link} />
+              <Tab
+                style={navbarItem}
+                label="CREATE ITEM"
+                to="/create"
+                component={Link}
+              />
+              <Tab
+                style={navbarItem}
+                label="COMPLETED ITEMS!"
+                to="/completed"
+                component={Link}
+              />
+            </Tabs>
           </div>
         </Paper>
       </header>

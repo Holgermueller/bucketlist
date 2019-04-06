@@ -7,6 +7,15 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import DeleteItemDialog from "./dialogs/deleteItemDialog.component";
 import API from "../utils/API";
 
+const mainDiv = {
+  textAlign: "center"
+}
+
+const formStyles = {
+  display: "inline-grid",
+  textAlign: "center"
+};
+
 export default class editItem extends Component {
   constructor(props) {
     super(props);
@@ -88,13 +97,14 @@ export default class editItem extends Component {
 
   render() {
     return (
-      <div>
+      <div style={mainDiv}>
         <h3>Edit your Bucket List Item!</h3>
 
-        <form onSubmit={this.onSubmit}>
+        <form style={formStyles} onSubmit={this.onSubmit}>
           <TextField
             type="text"
             className="form-control"
+            style={{width: 250}}
             value={this.state.bucketListItem_name}
             onChange={this.onChangeBucketListItemName}
           />
@@ -102,6 +112,7 @@ export default class editItem extends Component {
           <TextField
             type="text"
             className="form-control"
+            style={{width: 250}}
             value={this.state.bucketListItem_comment}
             onChange={this.onChangeBucketListItemComment}
           />
@@ -119,6 +130,7 @@ export default class editItem extends Component {
               />
             }
             label="Completed?"
+            labelPlacement="start"
           />
 
           <SubmitButton />

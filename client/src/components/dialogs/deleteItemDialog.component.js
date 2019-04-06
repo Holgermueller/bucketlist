@@ -50,7 +50,7 @@ export default class DeleteAlertDialog extends React.Component {
           variant="contained"
           onClick={this.handleClickOpen}
         >
-          DELETE
+          DELETE?
         </Button>
         <Dialog
           open={this.state.open}
@@ -75,10 +75,10 @@ export default class DeleteAlertDialog extends React.Component {
               onClick={this.handleClose}
               color="secondary"
             >
-              NO!
+              NO
             </Button>
             <Button onClick={this.handleDelete} color="primary">
-              YES!!!
+              YES
             </Button>
           </DialogActions>
         </Dialog>
