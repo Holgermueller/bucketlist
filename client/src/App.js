@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App container">
-          <h2 style={appHeader}>The Bucket List</h2>
+          <h1 style={appHeader}>The Bucket List</h1>
           <h4 style={subHeader}>Helping you get all your affairs in order</h4>
           <br />
           <Navbar />

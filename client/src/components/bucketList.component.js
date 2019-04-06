@@ -4,7 +4,6 @@ import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
-import "./bucket-list.component.css";
 import API from "../utils/API";
 
 const headerStyle = {
@@ -21,7 +20,7 @@ const editLink = {
   float: "right",
   padding: "4px",
   color: "aliceblue",
-  backgroundColor: "#00FFFF",
+  backgroundColor: "#4169e1",
   borderRadius: "15px",
   margin: "0px 2px 2px 0px"
 };

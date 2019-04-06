@@ -66,7 +66,7 @@ export default class DeleteAlertDialog extends React.Component {
           <Divider />
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Are you sure you want to delete this?
+              Are you sure you want to delete this item?
             </DialogContentText>
           </DialogContent>
           <DialogActions>

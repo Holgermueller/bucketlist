@@ -14,10 +14,6 @@ const formStyles = {
   display: "inline-grid"
 };
 
-const textField = {
-  width: "200"
-};
-
 const error = {
   color: "red"
 };
@@ -71,7 +67,7 @@ export default class createItem extends Component {
           <form onSubmit={this.handleSubmit} style={formStyles}>
             <h2 style={error}>{this.state.error}</h2>
             <TextField
-              style={textField}
+              style={{width: 250}}
               name="bucketListItem_name"
               placeholder="What would you like to do?"
               value={this.state.bucketListItem_name}

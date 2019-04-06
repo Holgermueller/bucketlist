@@ -6,13 +6,15 @@ import API from "../utils/API";
 
 const completedListDisplay = {};
 
-const headerStyle = {};
+const headerStyle = { textAlign: "center" };
 
 const completedListItem = { textAlign: "center", marginBottom: "5px" };
 
 const CompletedItem = props => (
   <Card style={completedListItem}>
-    <p>{props.completedItemOnList.bucketListItem_name}</p>
+    <Typography variant="h3" gutterBottom>
+      {props.completedItemOnList.bucketListItem_name}!
+    </Typography>
   </Card>
 );
 
@@ -49,11 +51,12 @@ export default class completedItems extends Component {
   render() {
     return (
       <div>
-        <Card>
+        <Card z={7}>
           <Typography variant="h6" style={headerStyle}>
-            Your Completed Items!
+            Your Completed Items!!
           </Typography>
         </Card>
+        <br />
 
         <div>
           {this.state.completedItemsOnList ? (
