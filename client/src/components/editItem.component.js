@@ -76,7 +76,7 @@ export default class editItem extends Component {
       .then(res => console.log(res.data))
       .catch(err => console.log(err));
 
-      this.props.history.push("/");
+    this.props.history.push("/");
   };
 
   handleDelete = id => {
@@ -128,7 +128,7 @@ export default class editItem extends Component {
 
           <hr />
 
-          <DeleteItemDialog />
+          <DeleteItemDialog {...this.props} />
           {/* <Button onClick={this.handleDelete}>Delete</Button> */}
         </form>
       </div>
